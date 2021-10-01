@@ -8,9 +8,17 @@ public class main {
 		
 	 td1 td = new td1();
 	 td.creeConnexion();
-     td.InsererPeriodicite();
-     td.SupprimerPeriodicite();
-     td.ModifierPeriodicite();
-	
+     td.InsererPeriodicite(13, "'salut'");
+     td.SupprimerPeriodicite(13);
+     td.ModifierPeriodicite(75,50,"'yo'",16);
+     td.InsererRevue(2, "'yo'", "'yo'", 63, "'yo'", 200);
+     td.SupprimerRevue(0);
+     td.ModifierRevue(10, 12345, 5, 200);
+     td.InsererClient(5, "'Lassalle'", "'Jean'", 5, "'jsp'", 54000, "'France'", "'Terre'");
+     td.SupprimerClient(4);
+     td.ModifierClient(4, 2, 55000, 57000);
+     td.InsererAbonnement(7, "09/06/2020", "10/06/2020", 10, 20);
+	//value = nouvelle valeur de l'id, value1 = id existant qu'on veut modifier et value2 = id existant du libelle qu'on veut modifier
+     
 	}
 }
