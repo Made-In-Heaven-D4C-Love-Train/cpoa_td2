@@ -1,7 +1,9 @@
 package cpoa_td1;
 import javax.swing.*;
 import java.awt.*;
-public class Menus extends JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Menus extends JFrame{
 	
 		   private JMenuBar barre = new JMenuBar();
 		   
@@ -25,8 +27,8 @@ public class Menus extends JFrame {
 		   private JMenuItem ajoutée_a = new JMenuItem("ajouter");
 		   private JMenuItem suprimée_a = new JMenuItem("suprimer");
 		   private JMenuItem modifiée_a = new JMenuItem("modifier");
-
-
+		   
+		   
 		public Menus() {
 		    super("menu gestionaire");
 		     setJMenuBar(barre);
@@ -46,10 +48,28 @@ public class Menus extends JFrame {
 		     abonnement.add(ajoutée_a);
 		     abonnement.add(suprimée_a);
 		     abonnement.add(modifiée_a);
+		     
+		   
 		     getContentPane().setBackground(Color.white);
 		     setSize(400, 300);
 		     setDefaultCloseOperation(EXIT_ON_CLOSE);
 		     setVisible(true);
+		    
+		     ajoutée_p.addActionListener(new ActionListener() {
+		     
+		    	 public void actionPerformed(ActionEvent e) {
+		    		 td1 td = new td1();
+		    		 td.InsererPeriodicite(20, "'salut'");
+		    	 }
+		     });
+		     suprimée_p.addActionListener(new ActionListener()	{
+		    	 public void actionPerformed(ActionEvent e) {
+		    		 td1 td = new td1();
+		    		 td.SupprimerPeriodicite(16);
+		    	 }
+		     });
+             périodicité.add(ajoutée_p);
+             périodicité.add(suprimée_p);
 		  }
 
 		  public static void main(String[] args) { new Menus(); }
