@@ -17,7 +17,9 @@ public class main {
      td.InsererClient(5, "'Lassalle'", "'Jean'", 5, "'jsp'", 54000, "'France'", "'Terre'");
      td.SupprimerClient(4);
      td.ModifierClient(4, 2, 55000, 57000);
-     td.InsererAbonnement(7, "09/06/2020", "10/06/2020", 10, 20);
+     td.InsererAbonnement(10, "09/06/2020", "10/06/2020", 10, 20);
+     td.SupprimerAbonnement(9);
+     td.ModifierAbonnement(2, 1);
 	//value = nouvelle valeur de l'id, value1 = id existant qu'on veut modifier et value2 = id existant du libelle qu'on veut modifier
      
 	}

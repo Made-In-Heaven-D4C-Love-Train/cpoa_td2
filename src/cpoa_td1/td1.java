@@ -1,7 +1,10 @@
 package cpoa_td1;
-import java.sql.*;
-import java.util.Scanner;
-import java.sql.Date;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 public class td1 {
@@ -197,14 +200,18 @@ public class td1 {
 	   Connection laConnexion = creeConnexion();
 	   DateTimeFormatter formatage = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	   LocalDate dateDebut = LocalDate.parse(date_debut, formatage);
-	   java.sql.Date.valueOf(dateDebut);
-	   formatage.format(dateDebut);
+	   java.sql.Date SQLdateDebut = java.sql.Date.valueOf(dateDebut);
+	  // formatage.format(dateDebut);
 	   DateTimeFormatter formatage1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	   LocalDate dateFin = LocalDate.parse(date_fin, formatage1);
-	   java.sql.Date.valueOf(dateFin);
-	   formatage1.format(dateFin);
-	   PreparedStatement req = laConnexion.prepareStatement("insert into Abonnement (id_abonnement, date_debut, date_fin, id_client, id_revue) values("+id_abonnement+","+dateDebut+","+dateFin+","+id_client+","+id_revue+")", 
-				Statement.RETURN_GENERATED_KEYS);
+	   java.sql.Date SQLdateFin = java.sql.Date.valueOf(dateFin);
+	  // formatage1.format(dateFin);
+	   PreparedStatement req = laConnexion.prepareStatement("insert into Abonnement (id_abonnement, date_debut, date_fin, id_client, id_revue) values(?,?,?,?,?)");
+	   req.setInt(1,id_abonnement);
+	   req.setDate(2, SQLdateDebut);
+	   req.setDate(3, SQLdateFin);
+	   req.setInt(4, id_client);
+	   req.setInt(5, id_revue);
 	   
 	   int nbLignes = req.executeUpdate();
 	   System.out.println("nombre de lignes : " +nbLignes);
@@ -216,4 +223,43 @@ public class td1 {
 	  }
 
 }
+  public void SupprimerAbonnement(int id_abonnement) {
+      try {
+       Connection laConnexion = creeConnexion();
+
+       PreparedStatement requete = 
+               laConnexion.prepareStatement("delete from Abonnement where id_abonnement="+id_abonnement+"");
+
+       int nbLignes = requete.executeUpdate();
+       System.out.println("nombre de lignes : " +nbLignes);
+    Statement requete2 = laConnexion.createStatement();
+    ResultSet res = requete.executeQuery("select description from Revue");
+    System.out.println(res);
+      } catch (SQLException sqle) {
+    System.out.println("Pb select " + sqle.getMessage());
+      }
+
+    }
+  public void ModifierAbonnement( int id_abonnement, int id_abonnement1) {
+      try {
+       Connection laConnexion = creeConnexion();
+       Connection laConnexion2 = creeConnexion();
+	  
+
+       Statement stmt2 = laConnexion2.createStatement();
+       String sql2 = "UPDATE Abonnement set id_abonnement ="+id_abonnement+"  where id_abonnement ="+id_abonnement1+"";
+       stmt2.executeUpdate(sql2);
+
+              
+
+    Statement requete2 = laConnexion.createStatement();
+    ResultSet res = stmt2.executeQuery("select id_revue from Revue");
+    System.out.println(res);
+      } catch (SQLException sqle) {
+    System.out.println("Pb select " + sqle.getMessage());
+      }
+
+    }
+  
+  
 }
