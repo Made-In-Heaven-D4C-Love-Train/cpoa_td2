@@ -38,4 +38,10 @@ return "(" + (this.id_periodicite>=0?this.id_periodicite:"nouveau") + ") " +
 this.libelle;
 }
 
+<<<<<<< HEAD
+
+
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/Made-In-Heaven-D4C-Love-Train/cpoa_td2.git
