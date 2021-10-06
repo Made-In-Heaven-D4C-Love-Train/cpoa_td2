@@ -2,6 +2,7 @@ package cpoa_td1;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+
 public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
 
     private static MySQLPeriodiciteDAO instance;
@@ -68,4 +69,5 @@ public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
         // TODO Auto-generated method stub
         return null;
     }
+
 }
