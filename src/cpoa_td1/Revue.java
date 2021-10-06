@@ -45,12 +45,21 @@ public void setId_periodicite(int id_periodicite) {
 this.id_periodicite = id_periodicite;
 }
 public void setTitre(String titre) {
+	if (titre==null || titre.trim().length()==0) {
+		throw new IllegalArgumentException("Le titre est vide !");
+		}
 this.titre = titre;
 }
 public void setDescription(String description) {
+	if (description==null || description.trim().length()==0) {
+		throw new IllegalArgumentException("La description est vide !");
+		}
 this.description = description;
 }
 public void setVisuel(String visuel) {
+	if (visuel==null || visuel.trim().length()==0) {
+		throw new IllegalArgumentException("Le visuel est vide !");
+		}
 this.visuel = visuel;
 }
 public void setPeriodicite(Periodicite periodicite) {
