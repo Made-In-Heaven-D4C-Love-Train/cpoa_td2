@@ -53,10 +53,16 @@ this.id_revue = id_revue;
 }
 
 public void setDate_debut(String date_debut) {
+	if (date_debut==null || date_debut.trim().length()==0) {
+		throw new IllegalArgumentException("La date est vide !");
+		}
 this.date_debut = date_debut;
 }
 
 public void setDate_fin(String date_fin) {
+	if (date_fin==null || date_fin.trim().length()==0) {
+		throw new IllegalArgumentException("La date est vide !");
+		}
 this.date_fin = date_fin;
 }
 

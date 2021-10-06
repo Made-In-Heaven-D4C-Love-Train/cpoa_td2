@@ -49,18 +49,33 @@ public void setCode_postal(int code_postal) {
 this.code_postal = code_postal;
 }
 public void setNom(String nom) {
+	if (nom==null || nom.trim().length()==0) {
+		throw new IllegalArgumentException("Le nom est vide !");
+		}
 this.nom = nom;
 }
 public void setPrenom(String prenom) {
+	if (prenom==null || prenom.trim().length()==0) {
+		throw new IllegalArgumentException("Le prénom est vide !");
+		}
 this.prenom = prenom;
 }
 public void setVoie(String voie) {
+	if (voie==null || voie.trim().length()==0) {
+		throw new IllegalArgumentException("La voie est vide !");
+		}
 this.voie = voie;
 }
 public void setVille(String ville) {
+	if (ville==null || ville.trim().length()==0) {
+		throw new IllegalArgumentException("La ville est vide !");
+		}
 this.ville = ville;
 }
 public void setPays(String pays) {
+	if (pays==null || pays.trim().length()==0) {
+		throw new IllegalArgumentException("Le pays est vide !");
+		}
 this.pays = pays;
 }
 }
