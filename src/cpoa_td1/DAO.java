@@ -8,5 +8,8 @@ public interface DAO<T> {
 	public abstract boolean update(T objet);
 	public abstract boolean delete(T objet);
 	ArrayList<Periodicite> findAll();
+	ArrayList<Revue> findAll1();
+	ArrayList<Client> findAll2();
+	ArrayList<Abonnement> findAll3();
 
 }
