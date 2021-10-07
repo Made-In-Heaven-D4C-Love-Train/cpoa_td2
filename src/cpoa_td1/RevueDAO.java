@@ -12,6 +12,6 @@ public interface RevueDAO {
 
 	ArrayList<Revue> findAll();
 
-	Revue getById(int id);
+	Revue getById(int id, int id1, int id2);
 
 }
