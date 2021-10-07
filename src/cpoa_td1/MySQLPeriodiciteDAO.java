@@ -38,14 +38,34 @@ public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
 
     @Override
     public boolean create(Periodicite objet) {
-        // TODO Auto-generated method stub
-                return false;
+    	td1 td = new td1();
+        Connection laConnexion = td.creeConnexion();
+        PreparedStatement requete;
+        try {
+            requete = laConnexion.prepareStatement("insert into Periodicite (id_periodicite, libelle) values(?,?)");
+            int nbLignes = requete.executeUpdate();
+            return nbLignes==1;
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+          }
+        return false;
+                
     }
 
     @Override
     public boolean update(Periodicite objet) {
-        // TODO Auto-generated method stub
+    	td1 td = new td1();
+        Connection laConnexion = td.creeConnexion();
+        PreparedStatement requete;
+        try {
+            requete = laConnexion.prepareStatement("UPDATE Periodicite set id_periodicite =? where id_periodicite =?");
+            int nbLignes = requete.executeUpdate();
+            return nbLignes==1;
+        } catch (SQLException sqle) {
+            System.out.println("Pb select " + sqle.getMessage());
+          }
         return false;
+        
     }
 
     @Override
@@ -66,8 +86,41 @@ public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
 
     @Override
     public ArrayList<Periodicite> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+       
+    	 ArrayList<Periodicite> periodicite =null;
+    	    try {
+    	    td1 td = new td1();
+    	    Connection laConnexion = td.creeConnexion();
+    	    PreparedStatement requete = 
+    	    laConnexion.prepareStatement("select * from Periodicite");
+    	    ResultSet res = requete.executeQuery();
+    	    if (res.next()) {
+
+    	    return periodicite;
+
+    	    }
+    	    }catch (SQLException sqle) {
+    	        System.out.println("Erreur connexion" + sqle.getMessage());
+    	        }
+    	    return periodicite;
     }
+
+	@Override
+	public ArrayList<Revue> findAll1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Client> findAll2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Abonnement> findAll3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
