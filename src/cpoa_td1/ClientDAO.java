@@ -10,8 +10,8 @@ public interface ClientDAO {
 
 	boolean delete(Client objet);
 
-	Client getById(int id, int id1, int id2);
-
 	ArrayList<Client> findAll();
+
+	Client getById(int id);
 
 }

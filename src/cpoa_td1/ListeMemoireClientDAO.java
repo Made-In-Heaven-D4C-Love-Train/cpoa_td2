@@ -26,8 +26,8 @@ public class ListeMemoireClientDAO implements ClientDAO {
 
 		this.donnees = new ArrayList<Client>();
 
-		this.donnees.add(new Client(1, 97, 757, "Mensuel", "non", "non", "non", "non"));
-		this.donnees.add(new Client(2, 78, 999, "Quotidien", "oui", "oui", "oui", "oui"));
+		this.donnees.add(new Client(1, 97, "757", "Mensuel", "non", "non", "non", "non"));
+		this.donnees.add(new Client(2, 78, "999", "Quotidien", "oui", "oui", "oui", "oui"));
 	}
 
 
@@ -77,9 +77,9 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	@Override
-	public Client getById(int id, int id1, int id2) {
+	public Client getById(int id) {
 		// Ne fonctionne que si l'objet métier est bien fait...
-		int idx = this.donnees.indexOf(new Client(id, id1, id2, "test", "test", "test", "test", "test"));
+		int idx = this.donnees.indexOf(new Client(id, 5, "id2", "test", "test", "test", "test", "test"));
 		if (idx == -1) {
 			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
 		} else {

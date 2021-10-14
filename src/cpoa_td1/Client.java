@@ -1,11 +1,12 @@
 package cpoa_td1;
 
 public class Client {
-private int id_client, no_rue, code_postal;
+private int id_client, no_rue;
+String code_postal;
 private String nom, prenom, voie, ville, pays;
 
 
-public Client(int id_client, int no_rue, int code_postal, String nom, String prenom, String voie, String ville, String pays) {
+public Client(int id_client, int no_rue, String code_postal, String nom, String prenom, String voie, String ville, String pays) {
 	this.setId_client(id_client);
 	this.setNo_rue(no_rue);
 	this.setCode_postal(code_postal);
@@ -21,7 +22,7 @@ public int getId_client() {
 public int getNo_rue() {
 	return this.no_rue;
 }
-public int getCode_postal() {
+public String getCode_postal() {
 	return this.code_postal;
 }
 public String getNom() {
@@ -45,7 +46,7 @@ this.id_client = id_client;
 public void setNo_rue(int no_rue) {
 this.no_rue = no_rue;
 }
-public void setCode_postal(int code_postal) {
+public void setCode_postal(String code_postal) {
 this.code_postal = code_postal;
 }
 public void setNom(String nom) {
