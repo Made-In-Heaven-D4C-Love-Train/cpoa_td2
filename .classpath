@@ -11,7 +11,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="//etu.ad.univ-lorraine.fr/stancato4u/Bureau/projets JAVA 3/mysql-connector-java-8.0.26.jar">
+	<classpathentry kind="lib" path="C:/Users/33781/Desktop/projets JAVA 3/.metadata/mysql-connector-java-8.0.26.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
