@@ -1,4 +1,4 @@
-package cpoa_td1;
+package objMetier;
 
 public class Revue {
 private int id_revue, tarif_numero, id_periodicite;
@@ -13,6 +13,9 @@ public Revue(int id_revue, int tarif_numero, int id_periodicite, String titre, S
 	this.setDescription(description);
 	this.setVisuel(visuel);
 	this.setPeriodicite(periodicite);
+}
+public Revue(String string, String string2, int i, String string3, Periodicite dut2a) {
+	// TODO Auto-generated constructor stub
 }
 public int getId_revue() {
 	return this.id_revue;
@@ -64,6 +67,10 @@ this.visuel = visuel;
 }
 public void setPeriodicite(Periodicite periodicite) {
 this.periodicite = periodicite;
+}
+public String toString() {
+return "(" + (this.id_revue>=0?this.id_revue:"nouveau") + ") " + 
+this.id_revue + this.tarif_numero + this.id_periodicite + this.titre + this.description + this.visuel + this.periodicite;
 }
 
 }

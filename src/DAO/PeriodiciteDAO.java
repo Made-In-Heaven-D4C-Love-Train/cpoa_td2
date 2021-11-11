@@ -1,9 +1,11 @@
-package cpoa_td1;
+package DAO;
 
 import java.util.ArrayList;
 
-public interface PeriodiciteDAO<T> {
-	public abstract T getById(int id);
+import objMetier.Periodicite;
+
+public interface PeriodiciteDAO extends DAO<Periodicite> {
+    Periodicite getById(int id);
 	ArrayList<Periodicite> findAll();
 	boolean create(Periodicite objet);
 	boolean update(Periodicite objet);

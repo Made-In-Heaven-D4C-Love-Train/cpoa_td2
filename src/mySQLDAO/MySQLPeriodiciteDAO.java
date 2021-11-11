@@ -1,6 +1,11 @@
-package cpoa_td1;
+package mySQLDAO;
 import java.sql.*;
 import java.util.List;
+
+import DAO.DAO;
+import cpoa_td1.td1;
+import objMetier.Periodicite;
+
 import java.util.ArrayList;
 
 public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
@@ -16,9 +21,9 @@ public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
     return instance;
     }
     @Override
-    public Periodicite getById(int id) {
+    public Periodicite getById(int id) throws SQLException {
     Periodicite periodicite =null;
-    try {
+    
     td1 td = new td1();
     Connection laConnexion = td.creeConnexion();
     PreparedStatement requete = 
@@ -30,65 +35,57 @@ public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
     return periodicite;
 
     }
-    }catch (SQLException sqle) {
-        System.out.println("Erreur connexion" + sqle.getMessage());
-        }
+    
     return periodicite;
 }
 
     @Override
-    public boolean create(Periodicite objet) {
+    public boolean create(Periodicite objet) throws SQLException {
     	td1 td = new td1();
         Connection laConnexion = td.creeConnexion();
         PreparedStatement requete;
-        try {
-            requete = laConnexion.prepareStatement("insert into Periodicite (id_periodicite, libelle) values(?,?)");
+        
+            requete = laConnexion.prepareStatement("insert into Periodicite (libelle) values(?)");
             int nbLignes = requete.executeUpdate();
             return nbLignes==1;
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-          }
-        return false;
+       
+        
                 
     }
 
     @Override
-    public boolean update(Periodicite objet) {
+    public boolean update(Periodicite objet) throws SQLException {
     	td1 td = new td1();
         Connection laConnexion = td.creeConnexion();
         PreparedStatement requete;
-        try {
+        
             requete = laConnexion.prepareStatement("UPDATE Periodicite set id_periodicite =? where id_periodicite =?");
             int nbLignes = requete.executeUpdate();
             return nbLignes==1;
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-          }
-        return false;
+        
+  
         
     }
 
     @Override
-    public boolean delete(Periodicite objet) {
+    public boolean delete(Periodicite objet) throws SQLException{
         td1 td = new td1();
         Connection laConnexion = td.creeConnexion();
         PreparedStatement requete;
-        try {
+        
             requete = laConnexion.prepareStatement("delete from Periodicite where id_periodicite=?");
             int nbLignes = requete.executeUpdate();
             return nbLignes==1;
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-          }
-        return false;
+       
+        
 
     }
 
     @Override
-    public ArrayList<Periodicite> findAll() {
+    public ArrayList<Periodicite> findAll() throws SQLException{
        
     	 ArrayList<Periodicite> periodicite =null;
-    	    try {
+    	   
     	    td1 td = new td1();
     	    Connection laConnexion = td.creeConnexion();
     	    PreparedStatement requete = 
@@ -99,28 +96,10 @@ public class MySQLPeriodiciteDAO implements DAO<Periodicite>{
     	    return periodicite;
 
     	    }
-    	    }catch (SQLException sqle) {
-    	        System.out.println("Erreur connexion" + sqle.getMessage());
-    	        }
+    	    
     	    return periodicite;
     }
 
-	@Override
-	public ArrayList<Revue> findAll1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public ArrayList<Client> findAll2() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Abonnement> findAll3() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

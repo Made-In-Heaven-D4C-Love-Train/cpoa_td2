@@ -1,6 +1,11 @@
-package cpoa_td1;
+package mySQLDAO;
 import java.sql.*;
 import java.util.List;
+
+import DAO.DAO;
+import cpoa_td1.td1;
+import objMetier.Client;
+
 import java.util.ArrayList;
 public class MySQLClientDAO implements DAO<Client>{
 	private static MySQLClientDAO instance;
@@ -14,9 +19,9 @@ public class MySQLClientDAO implements DAO<Client>{
     return instance;
     }
     @Override
-    public Client getById(int id) {
+    public Client getById(int id) throws SQLException{
     Client client =null;
-    try {
+    
     td1 td = new td1();
     Connection laConnexion = td.creeConnexion();
     PreparedStatement requete = 
@@ -28,65 +33,56 @@ public class MySQLClientDAO implements DAO<Client>{
     return client;
 
     }
-    }catch (SQLException sqle) {
-        System.out.println("Erreur connexion" + sqle.getMessage());
-        }
+   
     return client;
 }
 
     @Override
-    public boolean create(Client objet) {
+    public boolean create(Client objet) throws SQLException{
     	td1 td = new td1();
         Connection laConnexion = td.creeConnexion();
         PreparedStatement requete;
-        try {
-            requete = laConnexion.prepareStatement("insert into Client (id_client, nom, prenom, no_rue, voie, code_postal, ville, pays) values(?,?,?,?,?,?,?,?)");
+        
+            requete = laConnexion.prepareStatement("insert into Client (nom, prenom, no_rue, voie, code_postal, ville, pays) values(?,?,?,?,?,?,?)");
             int nbLignes = requete.executeUpdate();
             return nbLignes==1;
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-          }
-        return false;
+        
+      
                 
     }
 
     @Override
-    public boolean update(Client objet) {
+    public boolean update(Client objet) throws SQLException {
     	td1 td = new td1();
         Connection laConnexion = td.creeConnexion();
         PreparedStatement requete;
-        try {
+        
             requete = laConnexion.prepareStatement("UPDATE Client set id_client =? where id_client =?");
             int nbLignes = requete.executeUpdate();
             return nbLignes==1;
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-          }
-        return false;
+        
+        
         
     }
 
     @Override
-    public boolean delete(Client objet) {
+    public boolean delete(Client objet) throws SQLException {
         td1 td = new td1();
         Connection laConnexion = td.creeConnexion();
         PreparedStatement requete;
-        try {
+        
             requete = laConnexion.prepareStatement("delete from Client where id_client=?");
             int nbLignes = requete.executeUpdate();
             return nbLignes==1;
-        } catch (SQLException sqle) {
-            System.out.println("Pb select " + sqle.getMessage());
-          }
-        return false;
+        
 
     }
 
     @Override
-    public ArrayList<Client> findAll2() {
+    public ArrayList<Client> findAll() throws SQLException{
        
     	 ArrayList<Client> revue =null;
-    	    try {
+    	    
     	    td1 td = new td1();
     	    Connection laConnexion = td.creeConnexion();
     	    PreparedStatement requete = 
@@ -97,28 +93,10 @@ public class MySQLClientDAO implements DAO<Client>{
     	    return revue;
 
     	    }
-    	    }catch (SQLException sqle) {
-    	        System.out.println("Erreur connexion" + sqle.getMessage());
-    	        }
+    	    
     	    return revue;
     }
 
-	@Override
-	public ArrayList<Periodicite> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Revue> findAll1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Abonnement> findAll3() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

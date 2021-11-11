@@ -1,44 +1,48 @@
-package cpoa_td1;
+package listememoire;
 
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ListeMemoireClientDAO implements ClientDAO {
-
-	private static ListeMemoireClientDAO instance;
-
-	private List<Client> donnees;
+import DAO.AbonnementDAO;
+import objMetier.Abonnement;
 
 
-	public static ListeMemoireClientDAO getInstance() {
+public class ListeMemoireAbonnementDAO implements AbonnementDAO {
+
+	private static ListeMemoireAbonnementDAO instance;
+
+	private List<Abonnement> donnees;
+
+
+	public static ListeMemoireAbonnementDAO getInstance() {
 
 		if (instance == null) {
-			instance = new ListeMemoireClientDAO();
+			instance = new ListeMemoireAbonnementDAO();
 		}
 
 		return instance;
 	}
 
-	private ListeMemoireClientDAO() {
+	private ListeMemoireAbonnementDAO() {
 
-		this.donnees = new ArrayList<Client>();
+		this.donnees = new ArrayList<Abonnement>();
 
-		this.donnees.add(new Client(1, 97, "757", "Mensuel", "non", "non", "non", "non"));
-		this.donnees.add(new Client(2, 78, "999", "Quotidien", "oui", "oui", "oui", "oui"));
+		this.donnees.add(new Abonnement(0, 0, 0, null, null, null, null));
+		this.donnees.add(new Abonnement(0, 0, 0, null, null, null, null));
 	}
 
 
 	@Override
-	public boolean create(Client objet) {
+	public boolean create(Abonnement objet) {
 
 		objet.setId_client(3);
 		// Ne fonctionne que si l'objet métier est bien fait...
 		while (this.donnees.contains(objet)) {
 
-			objet.setId_client(objet.getId_client() + 1);
+			objet.setId_abonnement(objet.getId_abonnement() + 1);
 		}
 		boolean ok = this.donnees.add(objet);
 		
@@ -46,7 +50,7 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	@Override
-	public boolean update(Client objet) {
+	public boolean update(Abonnement objet) {
 		
 		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(objet);
@@ -61,9 +65,9 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	@Override
-	public boolean delete(Client objet) {
+	public boolean delete(Abonnement objet) {
 
-		Client supprime;
+		Abonnement supprime;
 		
 		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(objet);
@@ -77,9 +81,9 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	@Override
-	public Client getById(int id) {
+	public Abonnement getById(int id, int id1, int id2) {
 		// Ne fonctionne que si l'objet métier est bien fait...
-		int idx = this.donnees.indexOf(new Client(id, 5, "id2", "test", "test", "test", "test", "test"));
+		int idx = this.donnees.indexOf(new Abonnement(id, id1, id2, null, null, null, null));
 		if (idx == -1) {
 			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
 		} else {
@@ -88,7 +92,13 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	@Override
-	public ArrayList<Client> findAll() {
-		return (ArrayList<Client>) this.donnees;
+	public ArrayList<Abonnement> findAll() {
+		return (ArrayList<Abonnement>) this.donnees;
+	}
+
+	@Override
+	public Abonnement getById(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

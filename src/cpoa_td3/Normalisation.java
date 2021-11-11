@@ -1,7 +1,7 @@
 package cpoa_td3;
 
 
-import cpoa_td1.Client;
+import objMetier.Client;
 
 
 public class Normalisation {

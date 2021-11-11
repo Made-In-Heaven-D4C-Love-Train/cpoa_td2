@@ -1,8 +1,10 @@
-package cpoa_td1;
+package DAO;
 
 import java.util.ArrayList;
 
-public interface AbonnementDAO {
+import objMetier.Abonnement;
+
+public interface AbonnementDAO extends DAO<Abonnement>{
 
 	boolean create(Abonnement objet);
 

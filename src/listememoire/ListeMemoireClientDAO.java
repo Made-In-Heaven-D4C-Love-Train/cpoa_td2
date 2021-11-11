@@ -1,44 +1,47 @@
-package cpoa_td1;
+package listememoire;
 
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ListeMemoireRevueDAO implements RevueDAO {
-
-	private static ListeMemoireRevueDAO instance;
-
-	private List<Revue> donnees;
+import DAO.ClientDAO;
+import objMetier.Client;
 
 
-	public static ListeMemoireRevueDAO getInstance() {
+public class ListeMemoireClientDAO implements ClientDAO {
+
+	private static ListeMemoireClientDAO instance;
+
+	private List<Client> donnees;
+
+
+	public static ListeMemoireClientDAO getInstance() {
 
 		if (instance == null) {
-			instance = new ListeMemoireRevueDAO();
+			instance = new ListeMemoireClientDAO();
 		}
 
 		return instance;
 	}
 
-	private ListeMemoireRevueDAO() {
+	private ListeMemoireClientDAO() {
 
-		this.donnees = new ArrayList<Revue>();
+		this.donnees = new ArrayList<Client>();
 
-		this.donnees.add(new Revue(1, 97, 757, "Mensuel", "non", "non", null));
-		this.donnees.add(new Revue(2, 78, 999, "Quotidien", "oui", "oui", null));
+		this.donnees.add(new Client(1, 97, "757", "Mensuel", "non", "non", "non", "non"));
+		this.donnees.add(new Client(2, 78, "999", "Quotidien", "oui", "oui", "oui", "oui"));
 	}
 
 
 	@Override
-	public boolean create(Revue objet) {
+	public boolean create(Client objet) {
 
-		objet.setId_revue(3);
+		objet.setId_client(3);
 		// Ne fonctionne que si l'objet métier est bien fait...
 		while (this.donnees.contains(objet)) {
 
-			objet.setId_revue(objet.getId_revue() + 1);
+			objet.setId_client(objet.getId_client() + 1);
 		}
 		boolean ok = this.donnees.add(objet);
 		
@@ -46,7 +49,7 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 	}
 
 	@Override
-	public boolean update(Revue objet) {
+	public boolean update(Client objet) {
 		
 		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(objet);
@@ -61,9 +64,9 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 	}
 
 	@Override
-	public boolean delete(Revue objet) {
+	public boolean delete(Client objet) {
 
-		Revue supprime;
+		Client supprime;
 		
 		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(objet);
@@ -77,9 +80,9 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 	}
 
 	@Override
-	public Revue getById(int id, int id1, int id2) {
+	public Client getById(int id) {
 		// Ne fonctionne que si l'objet métier est bien fait...
-		int idx = this.donnees.indexOf(new Revue(id, id1, id2, "test", null, null, null));
+		int idx = this.donnees.indexOf(new Client(id, 5, "id2", "test", "test", "test", "test", "test"));
 		if (idx == -1) {
 			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
 		} else {
@@ -88,7 +91,7 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 	}
 
 	@Override
-	public ArrayList<Revue> findAll() {
-		return (ArrayList<Revue>) this.donnees;
+	public ArrayList<Client> findAll() {
+		return (ArrayList<Client>) this.donnees;
 	}
 }

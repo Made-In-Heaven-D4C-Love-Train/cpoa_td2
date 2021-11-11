@@ -1,8 +1,10 @@
-package cpoa_td1;
+package DAO;
 
 import java.util.ArrayList;
 
-public interface RevueDAO {
+import objMetier.Revue;
+
+public interface RevueDAO extends DAO<Revue>{
 
 	boolean create(Revue objet);
 

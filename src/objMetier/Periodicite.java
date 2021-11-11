@@ -1,4 +1,4 @@
-package cpoa_td1;
+package objMetier;
 
 public class Periodicite {
 private int id_periodicite;

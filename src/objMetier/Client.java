@@ -1,4 +1,4 @@
-package cpoa_td1;
+package objMetier;
 
 public class Client {
 private int id_client, no_rue;
@@ -78,5 +78,9 @@ public void setPays(String pays) {
 		throw new IllegalArgumentException("Le pays est vide !");
 		}
 this.pays = pays;
+}
+public String toString() {
+return "(" + (this.id_client>=0?this.id_client:"nouveau") + ") " + 
+this.id_client + this.no_rue + this.code_postal + this.nom + this.prenom + this.voie + this.ville + this.pays;
 }
 }

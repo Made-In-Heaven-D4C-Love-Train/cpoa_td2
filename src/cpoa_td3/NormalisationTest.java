@@ -3,8 +3,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import junit.framework.*;
+import objMetier.Client;
 import cpoa_td3.Normalisation;
-import cpoa_td1.Client;
 
 public class NormalisationTest{
 

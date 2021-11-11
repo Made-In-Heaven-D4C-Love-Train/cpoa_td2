@@ -1,8 +1,10 @@
-package cpoa_td1;
+package DAO;
 
 import java.util.ArrayList;
 
-public interface ClientDAO {
+import objMetier.Client;
+
+public interface ClientDAO extends  DAO<Client>{
 
 	boolean create(Client objet);
 
@@ -10,7 +12,7 @@ public interface ClientDAO {
 
 	boolean delete(Client objet);
 
-	ArrayList<Client> findAll();
+	 ArrayList<Client> findAll();
 
 	Client getById(int id);
 

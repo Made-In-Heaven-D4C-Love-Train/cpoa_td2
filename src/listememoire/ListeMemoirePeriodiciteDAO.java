@@ -1,7 +1,10 @@
-package cpoa_td1;
+package listememoire;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import DAO.PeriodiciteDAO;
+import objMetier.Periodicite;
 
 
 

@@ -1,13 +1,15 @@
-package cpoa_td1;
+package objMetier;
+
+import java.time.LocalDate;
 
 public class Abonnement {
 private int id_abonnement, id_client , id_revue;
-private String date_debut, date_fin;
+private LocalDate date_debut, date_fin;
 private Client client;
 private Revue revue;
 
 
-public Abonnement(int id_abonnement, int id_client, int id_revue, String date_debut, String date_fin, Client client, Revue revue) {
+public Abonnement(int id_abonnement, int id_client, int id_revue, LocalDate date_debut, LocalDate date_fin, Client client, Revue revue) {
 	this.setId_abonnement(id_abonnement);
 	this.setId_client(id_client);
 	this.setId_revue(id_revue);
@@ -28,10 +30,10 @@ public int getId_client() {
 public int getId_revue() {
 	return this.id_revue;
 }
-public String getDate_debut() {
+public LocalDate getDate_debut() {
 	return this.date_debut;
 }
-public String getDate_fin() {
+public LocalDate getDate_fin() {
 	return this.date_fin;
 }
 public Client getClient() {
@@ -52,15 +54,15 @@ public void setId_revue(int id_revue) {
 this.id_revue = id_revue;
 }
 
-public void setDate_debut(String date_debut) {
-	if (date_debut==null || date_debut.trim().length()==0) {
+public void setDate_debut(LocalDate date_debut) {
+	if (date_debut==null) {
 		throw new IllegalArgumentException("La date est vide !");
 		}
 this.date_debut = date_debut;
 }
 
-public void setDate_fin(String date_fin) {
-	if (date_fin==null || date_fin.trim().length()==0) {
+public void setDate_fin(LocalDate date_fin) {
+	if (date_fin==null) {
 		throw new IllegalArgumentException("La date est vide !");
 		}
 this.date_fin = date_fin;
@@ -73,5 +75,12 @@ this.client = client;
 public void setRevue(Revue revue) {
 this.revue = revue;
 }
+
+public String toString() {
+return "(" + (this.id_abonnement>=0?this.id_abonnement:"nouveau") + ") " + 
+this.id_client + this.id_revue + this.date_debut + this.date_fin + this.client + this.revue;
+}
+
+
 
 }
