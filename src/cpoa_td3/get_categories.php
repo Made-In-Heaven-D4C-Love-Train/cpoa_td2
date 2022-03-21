@@ -1,0 +1,1 @@
+[{"no_categorie":"1","lib_categorie":"Entr\u00e9e","no_ordre":"0","supprimee":"0"},{"no_categorie":"3","lib_categorie":"Viande","no_ordre":"1","supprimee":"0"},{"no_categorie":"4","lib_categorie":"Poissons","no_ordre":"2","supprimee":"0"},{"no_categorie":"6","lib_categorie":"Dessert","no_ordre":"3","supprimee":"0"}]
